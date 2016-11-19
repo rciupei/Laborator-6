@@ -1,33 +1,36 @@
 #include <iostream>
 
-
 using namespace std;
-long factorial(int n);
-double suma(int n, double a[]);
 
-int main()
-{
-   long f;
-   double s;
-   double a[5]={10., 33., -12.,1., 10.};
-   f=factorial(6);
-   s=suma(5, a);
-   cout<<f<<endl<<s;
-   return 0;
+//  Prototip
+void ordon(int [], int);
+
+int main(){
+    int a[] = {12, -14, 7, 23, 5, -71, 4};
+    int i;
+    ordon(a, 7);
+    //  Afisez sirul
+    for (i = 0; i < 7; i++) {
+      cout << a[i] << " ";
+    }
+    return 0;
 }
 
-long factorial(int n)
-{
-   if(n == 1)
-      return 1;
-   else
-      return n * factorial(n-1);
-}
-
-double suma(int n, double a[])
-{
-   if (n == 1)
-      return a[0];
-   else
-      return a[n-1] + suma(n-1, a);
+void ordon(int a[], int n) {
+    int i, p, flag, aux;
+    p = 0;
+    do {
+        flag = 0;
+        for(i = 0; i < n-1-p; i++) {
+            if(a[i] > a[i+1])
+            {
+                aux = a[i];
+                a[i] = a[i+1];
+                a[i+1] = aux;
+                flag = 1;  //  Marchez ca s-a facut o inversare
+            }
+        }
+        p++;
+    }
+    while(flag != 0);
 }
