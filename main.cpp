@@ -2,34 +2,32 @@
 
 
 using namespace std;
-struct vector {
-   double x, y, z;
-};
-
-int suma(int [], int );
-int modul(int[], int);
-void permcirc(int[], int);
-vector sumv(vector , vector );
-
-
+long factorial(int n);
+double suma(int n, double a[]);
 
 int main()
 {
-    int a[10]={-3,5,-8,2,3},i;
-    vector v1,v2;
-    v1.x=12,v1.y=7,v1.z=-1;
-    v2.x=-1, v2.y=5,v2.z=0;
-    vector sv = sumv(v1,v2);
+   long f;
+   double s;
+   double a[5]={10., 33., -12.,1., 10.};
+   f=factorial(6);
+   s=suma(5, a);
+   cout<<f<<endl<<s;
+   return 0;
+}
 
+long factorial(int n)
+{
+   if(n == 1)
+      return 1;
+   else
+      return n * factorial(n-1);
+}
 
-
-    int sm=suma(a,5);
-    modul(a,5);
-    permcirc(a,5);
-
-    for(i=0;i<5;i++)
-        cout<<a[i]<<" ";
-
-    cout << endl<< sm;
-    return 0;
+double suma(int n, double a[])
+{
+   if (n == 1)
+      return a[0];
+   else
+      return a[n-1] + suma(n-1, a);
 }
